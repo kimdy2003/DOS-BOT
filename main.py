@@ -4,6 +4,7 @@ from discord.ext import commands
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import os 
 
 scope = [
 'https://spreadsheets.google.com/feeds',
@@ -16,7 +17,7 @@ spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1FxYkmYVxMRHXk1VrBgVk0
 doc = gc.open_by_url(spreadsheet_url)
 
 client = commands.Bot(command_prefix = '>')
-token = 'Njg4ODkxNTU2MjExODUxMzI5.XoCtXQ.4OGazbLMhjQCxrrYe5C7HiLL8BY'
+token = os.environ["TOKEN"]
 
 @client.event
 async def on_ready () :
