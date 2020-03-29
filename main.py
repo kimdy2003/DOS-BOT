@@ -16,7 +16,7 @@ spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1FxYkmYVxMRHXk1VrBgVk0
 doc = gc.open_by_url(spreadsheet_url)
 
 client = commands.Bot(command_prefix = '>')
-token = 'Njg4ODkxNTU2MjExODUxMzI5.XoCsyg.R-CIxpTtjISGiAkfYgCrf3QOcBM'
+token = 'Njg4ODkxNTU2MjExODUxMzI5.XoCtXQ.4OGazbLMhjQCxrrYe5C7HiLL8BY'
 
 @client.event
 async def on_ready () :
