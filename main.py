@@ -23,7 +23,8 @@ token = os.environ["TOKEN"]
 async def on_ready () :
     print ("Bot is working")
     print (client.user.id)
-
+    activity = discord.Activity(name='Open to everyone | >helocommands', type=discord.ActivityType.watching)
+    await client.change_presence(activity=activity)
 @client.event
 async def on_guild_join(guild) :
     doc.add_worksheet(str(guild.id), rows = '5', cols = '10')
