@@ -37,7 +37,7 @@ async def ping (ctx) :
     embed.set_footer (text = datetime.datetime.today())
     await ctx.channel.send (embed = embed)
 
-startup_extensions = ['Internet','helpcommand', 'userinfo']
+startup_extensions = ['Internet','helpcommand', 'userinfo','antivirus]
 if __name__ == "__main__":
     for extension in startup_extensions:
         try:
