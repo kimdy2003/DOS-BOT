@@ -16,7 +16,7 @@ class filechecks(commands.Cog) :
             if url[0:4] == 'http' :
                 scaned = linkscan(url)
                 checked = linkcheck(scaned['resource'])
-                embed = discord.Embed(colour = discord.Colour.blue(), description = checked['url'][8:])
+                embed = discord.Embed(colour = discord.Colour.blue(), description = checked['url'][8:-2])
                 if int(checked['positives']) <= 5 :
                     embed.set_author(name = '이 사이트는 안전합니다!', icon_url = 'https://cdn3.iconfinder.com/data/icons/navigation-elements-1/512/letter-v-key-keyboard-2-512.png')
                 elif int(checked['positives']) > 5 :
