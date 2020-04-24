@@ -13,7 +13,7 @@ class commandcog (commands.Cog) :
         helps.set_author(name = 'Commands', icon_url = self.bot.user.avatar_url)
         helps.add_field (
             name = 'Dos command'
-            , value = '```>info >userinfo >streamer >findnow```'
+            , value = '```>info >userinfo```'
             ,inline = True
         )
 
