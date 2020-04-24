@@ -9,7 +9,7 @@ scope = [
 'https://spreadsheets.google.com/feeds',
 'https://www.googleapis.com/auth/drive',
 ]
-json_file_name = '/users/user/desktop/heroic-venture-270306-6b725eb305d4.json'
+json_file_name = 'heroic-venture-270306-6b725eb305d4.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file_name, scope)
 gc = gspread.authorize(credentials)
 spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1FxYkmYVxMRHXk1VrBgVk0PBrKlzKVFsQZHw4fDdSbis/edit#gid=0'
