@@ -11,7 +11,7 @@ async def on_ready() :
     print(f"{client.user.id}")
     
 
-for cogname in [file[:-3] for file in os.listdir("./cogs/") if file.endswith(".py")] :
+for cogname in [file[:-3] for file in os.listdir("./Cogs/") if file.endswith(".py")] :
     try :
         client.load_extension(f"Cogs.{cogname}")
         print(f"성공적으로 {cogname}이 로드되었음.")
