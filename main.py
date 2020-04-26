@@ -18,4 +18,4 @@ for cogname in [file[:-3] for file in os.listdir("./cogs/") if file.endswith(".p
     except Exception :
         print(f"{cogname} 로드를 실패하였음.")
 
-client.run('NjgyMTk4NTY4NjU1NzgxOTgx.XqVr8g.1He0ofvLKY4rfo-0b4CneljolPk')
+client.run(os.environ["BOT_TOKEN"])
