@@ -15,18 +15,40 @@ class donut(commands.Cog) :
 
     @commands.command()
     async def date (self, ctx) :
-        await ctx.channel.send(f"{datetime.datetime.today()}")
+        await ctx.channel.send(f"```{datetime.datetime.today()}```")
     
     @commands.command()
     async def userid(self, ctx, *name) :
         if bool(name) == False :
-            await ctx.channel.send(f"Your id is {ctx.author.id}")
+            await ctx.channel.send(f"```Your id is {ctx.author.id}```")
         else :
             name = list(name)
             name = " ".join(name)
             for member in ctx.author.guild.members :
                 if member.display_name == name :
-                    await ctx.channel.send(f"{member.name}'s id is {member.id}")
+                    await ctx.channel.send(f"```{member.name}'s id is {member.id}```")
+
+    @commands.command()
+    async def userprofile(self, ctx, *name) :
+        if bool(name) == False :
+            await ctx.channel.send(f"{ctx.author.avatar_url}")
+        else :
+            name = list(name)
+            name = " ".join(name)
+            for member in ctx.author.guild.members :
+                if member.display_name == name :
+                    await ctx.channel.send(f"```{member.name} profile url : {member.avatar_url}```")
+                    
+    @commands.command()
+    async def userdate(self, ctx, *name) :
+        if bool(name) == False :
+            await ctx.channel.send(f"{ctx.author.created_at}")
+        else :
+            name = list(name)
+            name = " ".join(name)
+            for member in ctx.author.guild.members :
+                if member.display_name == name :
+                    await ctx.channel.send(f"```{member.name} is created at : {member.created_at}```")
 
     @commands.command()
     async def chanid(self, ctx, *name) :
@@ -35,9 +57,11 @@ class donut(commands.Cog) :
             name = " ".join(name)
             for channel in ctx.author.guild.channels :
                 if channel.name == name :
-                    await ctx.channel.send(f"{name} ID : {channel.id}")
+                    await ctx.channel.send(f"```{name} ID : {channel.id}```")
         except :
             await ctx.channel.send(":: Command Error")
+
+          
 
 def setup(bot) :
     bot.add_cog(donut(bot))
