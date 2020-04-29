@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import asyncio
 import datetime
+import time
+import math
 
 
 class donut(commands.Cog) :
@@ -10,58 +12,15 @@ class donut(commands.Cog) :
         
     @commands.command()
     @commands.has_permissions(administrator=True)
-    async def clear (self, ctx, *args) :
-        await ctx.channel.purge(limit=None)
-
-    @commands.command()
-    async def date (self, ctx) :
-        await ctx.channel.send(f"```{datetime.datetime.today()}```")
-    
-    @commands.command()
-    async def userid(self, ctx, *name) :
-        if bool(name) == False :
-            await ctx.channel.send(f"```Your id is {ctx.author.id}```")
-        else :
-            name = list(name)
-            name = " ".join(name)
-            for member in ctx.author.guild.members :
-                if member.display_name == name :
-                    await ctx.channel.send(f"```{member.name}'s id is {member.id}```")
-
-    @commands.command()
-    async def userprofile(self, ctx, *name) :
-        if bool(name) == False :
-            await ctx.channel.send(f"{ctx.author.avatar_url}")
-        else :
-            name = list(name)
-            name = " ".join(name)
-            for member in ctx.author.guild.members :
-                if member.display_name == name :
-                    await ctx.channel.send(f"```{member.name} profile url : {member.avatar_url}```")
-                    
-    @commands.command()
-    async def userdate(self, ctx, *name) :
-        if bool(name) == False :
-            await ctx.channel.send(f"{ctx.author.created_at}")
-        else :
-            name = list(name)
-            name = " ".join(name)
-            for member in ctx.author.guild.members :
-                if member.display_name == name :
-                    await ctx.channel.send(f"```{member.name} is created at : {member.created_at}```")
-
-    @commands.command()
-    async def chanid(self, ctx, *name) :
+    async def eval (self, ctx, *args) :
+        args = " ".join(args)
         try :
-            name = list(name)
-            name = " ".join(name)
-            for channel in ctx.author.guild.channels :
-                if channel.name == name :
-                    await ctx.channel.send(f"```{name} ID : {channel.id}```")
-        except :
-            await ctx.channel.send(":: Command Error")
-
-          
+            result = eval(args)
+            embed = discord.Embed(colour = discord.Colour.green(), title = f"```{result}```")
+            embed.set_author(name = 'OUTPUT', icon_url = 'https://img.icons8.com/ios-filled/2x/output.png')
+            await ctx.channel.send(embed=embed)
+        except : 
+            await ctx.channel.send("Command raised an exception!")
 
 def setup(bot) :
     bot.add_cog(donut(bot))
